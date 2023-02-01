@@ -1,0 +1,65 @@
+---
+title: "Statistical Graphics"
+author: "Dr. Kam Tin Seong"
+format: html
+editor: visual
+---
+
+Gettinmg Started
+
+```{r}
+pacman::p_load(tidyverse, esquisse, ggstatsplot)
+```
+
+Importing Data
+
+```{r}
+exam_data <- read_csv("data/Exam_data.csv")
+```
+
+Two-sample Comparison Test
+
+Parametric test
+
+```{r}
+ggbetweenstats(
+  data = exam_data,
+  x = GENDER,
+  y = MATHS,
+  type = "p",
+  messages = FALSE)
+```
+
+Non-parametric test
+
+```{r}
+ggbetweenstats(
+  data = exam_data,
+  x = GENDER,
+  y = MATHS,
+  type = "np",
+  messages = FALSE)
+```
+
+ANOVA Test
+
+```{r}
+ggbetweenstats(
+  data = exam_data,
+  x = RACE,
+  y = MATHS,
+  type = "np",
+  messages = FALSE)
+```
+
+```{r}
+ggbetweenstats(
+  data = exam_data,
+  x = CLASS,
+  y = MATHS,
+  type = "np",
+  mean.ci = TRUE,
+  pairwise.comparisons = TRUE,
+  pairwise.display = "ns",
+  messages = FALSE)
+```
